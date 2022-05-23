@@ -1,5 +1,8 @@
 ## Résumé
 
+  python .\manage.py migrate lettings 0001 --fake
+  python .\manage.py migrate profiles 0001 --fake
+
 Site web d'Orange County Lettings
 
 ## Développement local

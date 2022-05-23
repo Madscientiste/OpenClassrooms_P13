@@ -21,11 +21,6 @@ jobs:
                   command: |
                       . .venv/bin/activate
                       pytest
-            - run:
-                  name: Running linting
-                  command: |
-                      . .venv/bin/activate
-                      flake8
             - store_artifacts:
                   path: test-reports/
                   destination: python_app

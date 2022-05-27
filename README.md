@@ -1,80 +1,84 @@
-## Résumé
+<p align="center">
+    <img height="128" src="https://user.oc-static.com/upload/2020/09/18/16004295603423_P11.png">
+</p>
 
-  python .\manage.py migrate lettings 0001 --fake
-  python .\manage.py migrate profiles 0001 --fake
+## Local Development
 
-Site web d'Orange County Lettings
+### Requirements
+- [Python 3.9+](https://www.python.org/downloads/) 
+- [GIT](https://git-scm.com/downloads)
 
-## Développement local
+### Setup
 
-### Prérequis
+Clone this repository to your local machine & cd into it.
 
-- Compte GitHub avec accès en lecture à ce repository
-- Git CLI
-- SQLite3 CLI
-- Interpréteur Python, version 3.6 ou supérieure
+```bash
+git clone <repo_url> <destination>
+cd <destination>
+```
 
-Dans le reste de la documentation sur le développement local, il est supposé que la commande `python` de votre OS shell exécute l'interpréteur Python ci-dessus (à moins qu'un environnement virtuel ne soit activé).
+Create a virtual environment and activate it.
 
-### macOS / Linux
+```bash
+python -m venv .venv
 
-#### Cloner le repository
+[windows]
+./.venv/Scripts/activate
 
-- `cd /path/to/put/project/in`
-- `git clone https://github.com/OpenClassrooms-Student-Center/Python-OC-Lettings-FR.git`
+[UNIX]
+source .venv/bin/activate
+```
 
-#### Créer l'environnement virtuel
+Install required dependencies.
 
-- `cd /path/to/Python-OC-Lettings-FR`
-- `python -m venv venv`
-- `apt-get install python3-venv` (Si l'étape précédente comporte des erreurs avec un paquet non trouvé sur Ubuntu)
-- Activer l'environnement `source venv/bin/activate`
-- Confirmer que la commande `python` exécute l'interpréteur Python dans l'environnement virtuel
-`which python`
-- Confirmer que la version de l'interpréteur Python est la version 3.6 ou supérieure `python --version`
-- Confirmer que la commande `pip` exécute l'exécutable pip dans l'environnement virtuel, `which pip`
-- Pour désactiver l'environnement, `deactivate`
+```bash
+pip install -r requirements.txt
+```
 
-#### Exécuter le site
+when everything has installed correctly, ensure to sync the database schema with the migrations.
 
-- `cd /path/to/Python-OC-Lettings-FR`
-- `source venv/bin/activate`
-- `pip install --requirement requirements.txt`
-- `python manage.py runserver`
-- Aller sur `http://localhost:8000` dans un navigateur.
-- Confirmer que le site fonctionne et qu'il est possible de naviguer (vous devriez voir plusieurs profils et locations).
+> ### if this is the first run from the previous version, fake the inital migrations.
 
-#### Linting
+```bash
+python manage.py migrate lettings 0001 --fake
+python manage.py migrate profiles 0001 --fake
+```
 
-- `cd /path/to/Python-OC-Lettings-FR`
-- `source venv/bin/activate`
-- `flake8`
+Then, migrate 
+```bash
+python manage.py migrate
+``` 
 
-#### Tests unitaires
+Check everything works correctly
 
-- `cd /path/to/Python-OC-Lettings-FR`
-- `source venv/bin/activate`
-- `pytest`
+```bash
+python -m pytest
+```
 
-#### Base de données
+5 tests should pass.
 
-- `cd /path/to/Python-OC-Lettings-FR`
-- Ouvrir une session shell `sqlite3`
-- Se connecter à la base de données `.open oc-lettings-site.sqlite3`
-- Afficher les tables dans la base de données `.tables`
-- Afficher les colonnes dans le tableau des profils, `pragma table_info(Python-OC-Lettings-FR_profile);`
-- Lancer une requête sur la table des profils, `select user_id, favorite_city from
-  Python-OC-Lettings-FR_profile where favorite_city like 'B%';`
-- `.quit` pour quitter
+### Running the Project
 
-#### Panel d'administration
+```bash
+python manage.py runserver
+```
 
-- Aller sur `http://localhost:8000/admin`
-- Connectez-vous avec l'utilisateur `admin`, mot de passe `Abc1234!`
+#### Check the linting of the project
 
-### Windows
+```bash
+python -m flake8
+``` 
 
-Utilisation de PowerShell, comme ci-dessus sauf :
 
-- Pour activer l'environnement virtuel, `.\venv\Scripts\Activate.ps1` 
-- Remplacer `which <my-command>` par `(Get-Command <my-command>).Path`
+#### Admin panele can be accessed at http://localhost:8000/admin/
+- You can authenticate with `admin` as the username, and `Abc1234!` as the password.
+
+## Deployment
+
+### Requirements
+- [Circle CI Account](https://circleci.com)
+- [Heroku Account](https://heroku.com)
+- [Docker Account](https://www.docker.com)
+
+### Setup
+

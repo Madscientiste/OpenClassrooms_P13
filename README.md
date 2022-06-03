@@ -80,5 +80,20 @@ python -m flake8
 - [Heroku Account](https://heroku.com)
 - [Docker Account](https://www.docker.com)
 
-### Setup
 
+### Commands
+```bash
+# Docker
+docker login -u <username>
+> password: <access_token or password>
+
+docker build -t <image_name> .
+docker push <image_name>
+docker run -p 5000:5000 -e PORT=5000 <image_name>
+
+# Heroku
+heroku login
+heroku container:login
+heroku container:push web
+heroku container:release web
+```845f270b-12c6-4be9-a2f9-2adcce03f585

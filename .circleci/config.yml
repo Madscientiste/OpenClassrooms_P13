@@ -33,4 +33,5 @@ jobs:
           name: Push Docker image to docker hub
           command: |
             docker login -u $DOCKER_USERNAME -p $DOCKER_PASS
+            docker tag $DOCKER_IMG $DOCKER_IMG:$CIRCLE_SHA1
             docker push $DOCKER_IMG:$CIRCLE_SHA1

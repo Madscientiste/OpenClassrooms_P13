@@ -1,7 +1,7 @@
 version: 2.1
 
 jobs:
-  build:
+  Install-Requirements:
     docker:
       - image: cimg/python:3.9
     steps:
@@ -17,14 +17,33 @@ jobs:
           key: deps1-{{ .Branch }}-{{ checksum "requirements.txt" }}
           paths:
             - ".venv"
+  Run-Tests:
+    docker:
+      - image: cimg/python:3.9
+    steps:
+      - checkout
       - run:
           name: Running tests
           command: |
             . .venv/bin/activate
             pytest
+  Run-Linting:
+    docker:
+      - image: cimg/python:3.9
+    steps:
+      - checkout
+      - run:
+          name: Running flake
+          command: |
+            . .venv/bin/activate
+            flake
 
+  Docker-Image:
+    docker:
+      - image: docker:17.05.0-ce-git
+    steps:
+      - checkout
       - setup_remote_docker
-
       - run:
           name: Build application Docker image
           command: |
@@ -35,3 +54,14 @@ jobs:
             docker login -u $DOCKER_USERNAME -p $DOCKER_PASS
             docker tag $DOCKER_IMG $DOCKER_IMG:$CIRCLE_SHA1
             docker push $DOCKER_IMG:$CIRCLE_SHA1
+
+workflows:
+  Run-Tests:
+    jobs:
+      - Install-Requirements
+      - Run-Tests:
+          requires:
+            - "Install-Requirements"
+      - Run-Linting:
+          requires:
+            - "Install-Requirements"

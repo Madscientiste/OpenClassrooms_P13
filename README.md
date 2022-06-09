@@ -81,7 +81,7 @@ python -m flake8
 - [Docker Account](https://www.docker.com)
 
 
-### Commands
+### Usefull Commands
 ```bash
 # Docker
 docker login -u <username>
@@ -96,4 +96,4 @@ heroku login
 heroku container:login
 heroku container:push web
 heroku container:release web
-```845f270b-12c6-4be9-a2f9-2adcce03f585
+```

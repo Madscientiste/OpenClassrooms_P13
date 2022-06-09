@@ -39,7 +39,7 @@ jobs:
           name: Running Tests
           command: |
             . .venv/bin/activate
-            pytest
+            python -m pytest
       - save-cache
 
   Run-Lintings:
@@ -52,7 +52,7 @@ jobs:
           name: Running Linting
           command: |
             . .venv/bin/activate
-            flake
+            python -m flake8
       - save-cache
 
   Docker-Image:
@@ -80,7 +80,7 @@ workflows:
       - Docker-Image:
           requires:
             - "Run-Tests"
-            - "Run-Lintings"
+            # - "Run-Lintings"
           filters:
             branches:
               only: master

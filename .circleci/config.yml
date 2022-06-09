@@ -76,7 +76,7 @@ workflows:
   Docker-Hub-Push:
     jobs:
       - Run-Tests
-      - Run-Lintings
+      # - Run-Lintings
       - Docker-Image:
           requires:
             - "Run-Tests"

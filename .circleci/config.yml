@@ -73,16 +73,14 @@ jobs:
             docker push $DOCKER_IMG:$CIRCLE_SHA1
 
 workflows:
-  Run-Checkups:
+  Docker-Hub-Push:
     jobs:
       - Run-Tests
       - Run-Lintings
-
-  Docker-Hub-Push:
-    jobs:
       - Docker-Image:
           requires:
-            - "Run-Checkups"
+            - "Run-Tests"
+            - "Run-Lintings"
           filters:
             branches:
               only: master

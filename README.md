@@ -80,6 +80,15 @@ python -m flake8
 - [Heroku Account](https://heroku.com)
 - [Docker Account](https://www.docker.com)
 
+#### How it Works
+
+```mermaid
+graph TD
+    A(Push to branch) --> B(CirlceCI run tests) -- all test passes --> C(Docker image and heroku gets updated) 
+
+```
+
+
 
 ### Usefull Commands
 ```bash

@@ -16,5 +16,4 @@ def index(request):
 
 
 def sentry_debug(request):
-    1 / 0
-    return render(request, "index.html")
+    return 1 / 0

@@ -9,7 +9,7 @@
 ## Heroku
 <!-- https://heroku.com/deploy?template=https://github.com/Madscientiste/OpenClassrooms_P13/tree/main -->
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Madscientiste/OpenClassrooms_P13/tree/main)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Madscientiste/OpenClassrooms_P13/tree/master)
 
 ## Local Development
 

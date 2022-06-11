@@ -1,12 +1,17 @@
+import environ
 import os
 
 import sentry_sdk
 from sentry_sdk.integrations.django import DjangoIntegration
 
+env = environ.Env(DEBUG=(bool, False))
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+# Take environment variables from .env file
+environ.Env.read_env(os.path.join(BASE_DIR, ".env"))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
@@ -117,7 +122,7 @@ USE_TZ = True
 STATIC_URL = "/static/"
 
 sentry_sdk.init(
-    dsn=os.environ["SENTRY_DSN"],
+    dsn=env("SENTRY_DSN"),
     integrations=[DjangoIntegration()],
     traces_sample_rate=1.0,
     send_default_pii=True,

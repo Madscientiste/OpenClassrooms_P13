@@ -4,7 +4,7 @@ import os
 import sentry_sdk
 from sentry_sdk.integrations.django import DjangoIntegration
 
-env = environ.Env(DEBUG=(bool, False))
+env = environ.Env(DEBUG=(bool, False), SENTRY_DSN=(str, None))
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)

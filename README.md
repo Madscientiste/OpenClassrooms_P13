@@ -9,7 +9,7 @@
 ## Heroku
 <!-- https://heroku.com/deploy?template=https://github.com/Madscientiste/OpenClassrooms_P13/tree/main -->
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Madscientiste/OpenClassrooms_P13/tree/master)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Madscientiste/OpenClassrooms_P13/tree/master&env[SENTRY_DSN]=replace_me)
 
 ## Local Development
 
@@ -115,20 +115,15 @@ DOCKER_USERNAME = "<docker_username>"
 # eg: DOCKER_USERNAME = your username
 ```
 
+### Setup Sentry
 
-### Usefull Commands
-```bash
-# Docker
-docker login -u <username>
-> password: <access_token or password>
+Create a new project in Sentry. And save the DSN in the .env variable as `SENTRY_DSN`.
 
-docker build -t <image_name> .
-docker push <image_name>
-docker run -p 5000:5000 -e PORT=5000 <image_name>
+### Setup Heroku
 
-# Heroku
-heroku login
-heroku container:login
-heroku container:push web
-heroku container:release web
+Only Sentry's DSN is required for heroku.
+
+```bash	
+SENTRY_DSN = "<sentry_dsn>"
+# eg: SENTRY_DSN = "https://kqzhrglierzhqglerqughlihuget.ingest.sentry.io/5843684"
 ```

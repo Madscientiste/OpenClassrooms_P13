@@ -2,6 +2,11 @@
     <img height="128" src="https://user.oc-static.com/upload/2020/09/18/16004295603423_P11.png">
 </p>
 
+
+## Circle Ci [![CircleCI](https://circleci.com/gh/Madscientiste/OpenClassrooms_P13/tree/master.svg?style=svg)](https://circleci.com/gh/Madscientiste/OpenClassrooms_P13/tree/master)
+
+## [Heroku](https://ocr-lettings.herokuapp.com/) ![](https://img.shields.io/badge/Active-blueviolet)
+
 ## Local Development
 
 ### Requirements
@@ -84,10 +89,27 @@ python -m flake8
 
 ```mermaid
 graph TD
-    A(Push to branch) --> B(CirlceCI run tests) -- all test passes --> C(Docker image and heroku gets updated) 
-
+    A(< branch > get updated) --> 
+    B(CirlceCI run tests & linting) -->
+    C(If we are on the master branch and previous jobs passed)
+    C --> D(CircleCI Push newly built docker image to Docker.Hub)
+    C --> E(Heroku gets Updated)
 ```
 
+### Setup CircleCI
+
+Fews environment variables are required to be set inside the CircleCI project.
+
+```bash
+DOCKER_IMG = "<docker_username>/<docker_repository>"
+# eg: DOCKER_IMG = "shaade/ocr-p13"
+
+DOCKER_PASS = "<docker_password>"
+# eg: DOCKER_PASS = your password or access token
+
+DOCKER_USERNAME = "<docker_username>"
+# eg: DOCKER_USERNAME = your username
+```
 
 
 ### Usefull Commands

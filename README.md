@@ -6,11 +6,6 @@
 ## Circle Ci 
 [![CircleCI](https://circleci.com/gh/Madscientiste/OpenClassrooms_P13/tree/master.svg?style=svg)](https://circleci.com/gh/Madscientiste/OpenClassrooms_P13/tree/master)
 
-## Heroku
-<!-- https://heroku.com/deploy?template=https://github.com/Madscientiste/OpenClassrooms_P13/tree/main -->
-
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Madscientiste/OpenClassrooms_P13/tree/master&env[SENTRY_DSN]=replace_me)
-
 ## Local Development
 
 ### Requirements
@@ -123,9 +118,11 @@ Create a new project in Sentry. And save the DSN in the .env variable as `SENTRY
 
 ### Setup Heroku
 
-Only Sentry's DSN is required for heroku.
+Only Sentry's DSN is required for heroku. be sure to replace inside the project settings
 
 ```bash	
 SENTRY_DSN = "<sentry_dsn>"
 # eg: SENTRY_DSN = "https://kqzhrglierzhqglerqughlihuget.ingest.sentry.io/5843684"
 ```
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Madscientiste/OpenClassrooms_P13/tree/master)
+

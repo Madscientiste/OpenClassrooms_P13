@@ -1,5 +1,6 @@
 {
     "name": "Openclassrooms P13",
     "repository": "https://github.com/Madscientiste/OpenClassrooms_P13",
-    "logo": "https://user.oc-static.com/upload/2020/09/18/16004295603423_P11.png"
+    "logo": "https://user.oc-static.com/upload/2020/09/18/16004295603423_P11.png",
+    "stack": "container"
 }

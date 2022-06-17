@@ -90,14 +90,20 @@ python -m flake8
 - [Docker Account](https://www.docker.com)
 
 #### How it Works
+B(CirlceCI run tests & linting) -->
+C(If we are on the master branch and previous jobs passed)
 
 ```mermaid
 graph TD
-    A(< branch > get updated) --> 
-    B(CirlceCI run tests & linting) -->
-    C(If we are on the master branch and previous jobs passed)
-    C --> D(CircleCI Push newly built docker image to Docker.Hub)
-    C --> E(Heroku gets Updated)
+    A(< branch > get updated)
+    
+    A --> D(its the master branch)
+    D --> E(Run tests & check linting)
+    E --> F(Deploy the newly built image to docker hub)
+    E --> G(Deploy to heroku)    
+
+    A --> B(its NOT the master branch)
+    B --> T(Run tests & check linting)
 ```
 
 ### Setup CircleCI

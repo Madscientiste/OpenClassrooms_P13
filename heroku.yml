@@ -1,6 +1,5 @@
 build:
   docker:
     web: Dockerfile
-    worker: worker/Dockerfile
   config:
     SENTRY_DSN: replace_me

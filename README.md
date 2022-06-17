@@ -118,11 +118,18 @@ Create a new project in Sentry. And save the DSN in the .env variable as `SENTRY
 
 ### Setup Heroku
 
-Only Sentry's DSN is required for heroku. be sure to replace inside the project settings
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Madscientiste/OpenClassrooms_P13/tree/master)
+
+When the project is deployed to heroku, set the environment variable `SENTRY_DSN` in the project settings, and then reboot all dynos.
 
 ```bash	
 SENTRY_DSN = "<sentry_dsn>"
 # eg: SENTRY_DSN = "https://kqzhrglierzhqglerqughlihuget.ingest.sentry.io/5843684"
 ```
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Madscientiste/OpenClassrooms_P13/tree/master)
 
+## Using Docker
+
+You can run the app locally using the following command:
+
+```bash
+docker run -p 5000:5000 -e PORT=5000 --env-file ./.env njustn/orc-p13:c361ea0e2639571285ea77bd6d81cf00de63690a

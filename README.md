@@ -79,10 +79,11 @@ python -m flake8
 
 ## Deployment
 
-### Requirements
-- [Circle CI Account](https://circleci.com)
-- [Heroku Account](https://heroku.com)
-- [Docker Account](https://www.docker.com)
+### Accounts Required
+- [Circle CI](https://circleci.com)
+- [Heroku](https://heroku.com)
+- [Docker](https://www.docker.com)
+- [Sentry](https://sentry.io)
 
 #### How it Works
 

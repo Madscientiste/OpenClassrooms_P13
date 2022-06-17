@@ -90,8 +90,6 @@ python -m flake8
 - [Docker Account](https://www.docker.com)
 
 #### How it Works
-B(CirlceCI run tests & linting) -->
-C(If we are on the master branch and previous jobs passed)
 
 ```mermaid
 graph TD

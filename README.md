@@ -94,12 +94,10 @@ python -m flake8
 ```mermaid
 graph TD
     A(< branch > get updated)
-    
     A --> D(its the master branch)
     D --> E(Run tests & check linting)
     E --> F(Deploy the newly built image to docker hub)
     E --> G(Deploy to heroku)    
-
     A --> B(its NOT the master branch)
     B --> T(Run tests & check linting)
 ```
